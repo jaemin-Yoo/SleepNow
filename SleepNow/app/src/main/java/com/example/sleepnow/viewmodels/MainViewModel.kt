@@ -1,14 +1,22 @@
 package com.example.sleepnow.viewmodels
 
 import android.app.Application
+import android.app.Dialog
 import android.os.Build
 import android.util.Log
 import android.widget.TimePicker
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.example.sleepnow.Event
 import com.example.sleepnow.utils.MyApplication
 import com.google.android.material.tabs.TabLayout
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
+
+    private val _showDialog = MutableLiveData<Event<Boolean>>()
+    val showDialog: LiveData<Event<Boolean>> = _showDialog
+
     fun getTime(timePicker: TimePicker, tabLayout: TabLayout){
 
         // 선택된 시간 가져오기
@@ -36,6 +44,8 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
         } else{
             calculateWakeUpTime(hour, min, age) // 기상시간 계산
         }
+
+        _showDialog.value = Event(true)
     }
 
     private fun calculateWakeUpTime(hour: Int, min: Int, age: Int){
