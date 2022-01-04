@@ -3,10 +3,10 @@ package com.example.sleepnow
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.SeekBar
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.sleepnow.databinding.ActivitySelectAgeBinding
+import com.example.sleepnow.utils.MyApplication
 import com.example.sleepnow.viewmodels.SelectAgeViewModel
 import kotlinx.android.synthetic.main.activity_select_age.*
 
@@ -23,6 +23,9 @@ class SelectAgeActivity : AppCompatActivity() {
         binding.vm = model
 
         btn_next.setOnClickListener {
+            // 나이 저장
+            MyApplication.prefs.setInt("age", sb_age.progress)
+
             // MainActivity 이동
             var intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
