@@ -16,7 +16,8 @@ class SplashActivity : AppCompatActivity() {
 
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            // x초 뒤 SelectAgeActivity 이동
+            val intent = Intent(this, SelectAgeActivity::class.java)
             startActivity(intent)
             finish()
         }, SPLASH_TIME)
