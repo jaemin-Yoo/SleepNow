@@ -1,4 +1,4 @@
-package com.example.sleepnow
+package com.example.sleepnow.utils
 
 open class Event<out T>(private val content: T) {
     var hasBeenHandled = false

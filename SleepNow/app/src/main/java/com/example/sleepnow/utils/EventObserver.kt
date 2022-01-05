@@ -1,4 +1,4 @@
-package com.example.sleepnow
+package com.example.sleepnow.utils
 
 import androidx.lifecycle.Observer
 

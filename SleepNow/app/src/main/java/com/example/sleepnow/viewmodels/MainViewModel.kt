@@ -1,21 +1,25 @@
 package com.example.sleepnow.viewmodels
 
 import android.app.Application
-import android.app.Dialog
 import android.os.Build
 import android.util.Log
 import android.widget.TimePicker
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.sleepnow.Event
+import com.example.sleepnow.data.SleepTimeData
+import com.example.sleepnow.utils.Event
 import com.example.sleepnow.utils.MyApplication
 import com.google.android.material.tabs.TabLayout
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
 
+    // MutableLiveData: 바뀔 수 있는 데이터
+    // LiveData: 변경 되지 않는 데이터 (생명주기를 알고있는 Observer)
     private val _showDialog = MutableLiveData<Event<Boolean>>()
     val showDialog: LiveData<Event<Boolean>> = _showDialog
+
+    var sleepTimeData = ArrayList<SleepTimeData>()
 
     fun getTime(timePicker: TimePicker, tabLayout: TabLayout){
 
@@ -44,12 +48,11 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
         } else{
             calculateWakeUpTime(hour, min, age) // 기상시간 계산
         }
-
-        _showDialog.value = Event(true)
     }
 
     private fun calculateWakeUpTime(hour: Int, min: Int, age: Int){
 
+        var sleepTimeList = arrayListOf<SleepTimeData>()
         var pickerMinute = hour * 60 + min
 
         when(age){
@@ -62,10 +65,14 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
                     val calHour = totalMinute / 60
                     val calMin = totalMinute % 60
+                    val time = "$calHour:$calMin"
                     Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
+                    sleepTimeList.add(SleepTimeData(time))
 
                     pickerMinute -= 50
                 }
+
+                sleepTimeData = sleepTimeList
             }
 
             in 3..5 -> {
@@ -77,10 +84,14 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
                     val calHour = totalMinute / 60
                     val calMin = totalMinute % 60
+                    val time = "$calHour:$calMin"
                     Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
+                    sleepTimeList.add(SleepTimeData(time))
 
                     pickerMinute -= 50
                 }
+
+                sleepTimeData = sleepTimeList
             }
 
             in 6..13 -> {
@@ -92,10 +103,14 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
                     val calHour = totalMinute / 60
                     val calMin = totalMinute % 60
+                    val time = "$calHour:$calMin"
                     Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
+                    sleepTimeList.add(SleepTimeData(time))
 
                     pickerMinute -= 50
                 }
+
+                sleepTimeData = sleepTimeList
             }
 
             in 14..17 -> {
@@ -107,10 +122,14 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
                     val calHour = totalMinute / 60
                     val calMin = totalMinute % 60
+                    val time = "$calHour:$calMin"
                     Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
+                    sleepTimeList.add(SleepTimeData(time))
 
                     pickerMinute -= 50
                 }
+
+                sleepTimeData = sleepTimeList
             }
 
             in 18..64 -> {
@@ -122,10 +141,14 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
                     val calHour = totalMinute / 60
                     val calMin = totalMinute % 60
+                    val time = "$calHour:$calMin"
                     Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
+                    sleepTimeList.add(SleepTimeData(time))
 
                     pickerMinute -= 90
                 }
+
+                sleepTimeData = sleepTimeList
             }
 
             else -> {
@@ -137,16 +160,23 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
                     val calHour = totalMinute / 60
                     val calMin = totalMinute % 60
+                    val time = "$calHour:$calMin"
                     Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
+                    sleepTimeList.add(SleepTimeData(time))
 
                     pickerMinute -= 90
                 }
+
+                sleepTimeData = sleepTimeList
             }
         }
+
+        _showDialog.value = Event(true)
     }
 
     private fun calculateBedTime(hour: Int, min: Int, age: Int){
 
+        var sleepTimeList = arrayListOf<SleepTimeData>()
         var pickerMinute = hour * 60 + min
 
         when(age){
@@ -159,10 +189,14 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
                     val calHour = totalMinute / 60
                     val calMin = totalMinute % 60
+                    val time = "$calHour:$calMin"
                     Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
+                    sleepTimeList.add(SleepTimeData(time))
 
                     pickerMinute += 50
                 }
+
+                sleepTimeData = sleepTimeList
             }
 
             in 3..5 -> {
@@ -174,10 +208,14 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
                     val calHour = totalMinute / 60
                     val calMin = totalMinute % 60
+                    val time = "$calHour:$calMin"
                     Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
+                    sleepTimeList.add(SleepTimeData(time))
 
                     pickerMinute += 50
                 }
+
+                sleepTimeData = sleepTimeList
             }
 
             in 6..13 -> {
@@ -189,10 +227,14 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
                     val calHour = totalMinute / 60
                     val calMin = totalMinute % 60
+                    val time = "$calHour:$calMin"
                     Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
+                    sleepTimeList.add(SleepTimeData(time))
 
                     pickerMinute += 50
                 }
+
+                sleepTimeData = sleepTimeList
             }
 
             in 14..17 -> {
@@ -204,10 +246,14 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
                     val calHour = totalMinute / 60
                     val calMin = totalMinute % 60
+                    val time = "$calHour:$calMin"
                     Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
+                    sleepTimeList.add(SleepTimeData(time))
 
                     pickerMinute += 50
                 }
+
+                sleepTimeData = sleepTimeList
             }
 
             in 18..64 -> {
@@ -219,10 +265,14 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
                     val calHour = totalMinute / 60
                     val calMin = totalMinute % 60
+                    val time = "$calHour:$calMin"
                     Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
+                    sleepTimeList.add(SleepTimeData(time))
 
                     pickerMinute += 90
                 }
+
+                sleepTimeData = sleepTimeList
             }
 
             else -> {
@@ -234,11 +284,17 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
                     val calHour = totalMinute / 60
                     val calMin = totalMinute % 60
+                    val time = "$calHour:$calMin"
                     Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
+                    sleepTimeList.add(SleepTimeData(time))
 
                     pickerMinute += 90
                 }
+
+                sleepTimeData = sleepTimeList
             }
         }
+
+        _showDialog.value = Event(true)
     }
 }

@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.sleepnow.databinding.ActivityMainBinding
 import com.example.sleepnow.dialogs.CustomDialog
+import com.example.sleepnow.utils.EventObserver
 import com.example.sleepnow.utils.MyApplication
 import com.example.sleepnow.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,11 +30,10 @@ class MainActivity : AppCompatActivity() {
         tab_state.addTab(tab_state.newTab().setText("기상시간"))
         tab_state.addTab(tab_state.newTab().setText("취침시간"))
 
-        model.showDialog.observe(this, Observer {
-            it.getContentIfNotHandled()?.let {
-                val dialog = CustomDialog(this)
-                dialog.showDialog()
-            }
+        // ViewModel에서 다이얼로그를 띄우기 위한 EventWrapper
+        model.showDialog.observe(this, EventObserver{
+            val dialog = CustomDialog(this)
+            dialog.showDialog(model.sleepTimeData)
         })
 
         // 환경설정 이동

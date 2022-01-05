@@ -16,6 +16,7 @@
         app:layout_constraintBottom_toTopOf="@id/linear2">
 
         <TextView
+            android:id="@+id/tv_time1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12:00 PM"
@@ -34,6 +35,7 @@
         app:layout_constraintBottom_toTopOf="@id/linear3">
 
         <TextView
+            android:id="@+id/tv_time2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12:00 PM"
@@ -52,6 +54,7 @@
         app:layout_constraintBottom_toTopOf="@id/linear4">
 
         <TextView
+            android:id="@+id/tv_time3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12:00 PM"
@@ -70,6 +73,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
+            android:id="@+id/tv_time4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12:00 PM"
