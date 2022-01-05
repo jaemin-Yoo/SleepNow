@@ -5,7 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
-    android:background="@drawable/bg_gradient">
+    android:background="@color/sky">
+
+    <ImageView
+        android:id="@+id/img_moon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:src="@drawable/ic_moon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <LinearLayout
         android:id="@+id/linearlayout"
@@ -13,7 +22,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingTop="30dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_moon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -43,7 +52,8 @@
             android:layout_height="wrap_content"
             android:text="Sleep Now"
             android:textSize="50dp"
-            android:textColor="@color/black"
+            android:textColor="@color/indigo"
+            android:textStyle="bold"
             android:layout_gravity="center"
             android:fontFamily="@font/medium"
             android:includeFontPadding="false"/>
@@ -53,7 +63,7 @@
             android:layout_height="wrap_content"
             android:text="슬립 나우"
             android:textSize="30dp"
-            android:textColor="@color/black"
+            android:textColor="@color/light_indigo"
             android:layout_gravity="center"
             android:fontFamily="@font/medium"
             android:includeFontPadding="false"/>
@@ -76,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Copyright ⓒ iamjm29. All Right Reserved"
-        android:textColor="@color/white"
+        android:textColor="@color/light_indigo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

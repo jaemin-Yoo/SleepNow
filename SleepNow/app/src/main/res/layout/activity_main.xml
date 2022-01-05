@@ -12,7 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:background="@color/sky">
 
         <ImageView
             android:id="@+id/btn_setting"
@@ -36,7 +37,10 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_state"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                app:tabIndicatorColor="@color/indigo"
+                app:tabSelectedTextColor="@color/indigo"
+                app:tabBackground="@color/sky"/>
 
             <TimePicker
                 android:id="@+id/timepicker"
@@ -49,7 +53,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="계산"
-                android:onClick="@{()->vm.getTime(timepicker, tabState)}"/>
+                android:onClick="@{()->vm.getTime(timepicker, tabState)}"
+                android:backgroundTint="@color/indigo"/>
 
         </LinearLayout>
 
