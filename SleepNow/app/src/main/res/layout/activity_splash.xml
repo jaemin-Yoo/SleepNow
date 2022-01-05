@@ -28,7 +28,8 @@
                 android:text="수면시간추천어플"
                 android:textColor="@color/black"
                 android:layout_weight="1"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:fontFamily="@font/medium"/>
 
             <View
                 android:layout_width="match_parent"
@@ -43,7 +44,9 @@
             android:text="Sleep Now"
             android:textSize="50dp"
             android:textColor="@color/black"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:fontFamily="@font/medium"
+            android:includeFontPadding="false"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,7 +54,9 @@
             android:text="슬립 나우"
             android:textSize="30dp"
             android:textColor="@color/black"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:fontFamily="@font/medium"
+            android:includeFontPadding="false"/>
 
     </LinearLayout>
 
@@ -74,6 +79,7 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/medium"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
