@@ -36,11 +36,10 @@ class MainActivity : AppCompatActivity() {
             dialog.showDialog(model.sleepTimeData)
         })
 
-        // 환경설정 이동
+        // 설정 이동
         btn_setting.setOnClickListener {
-            val intent = Intent(this, SelectAgeActivity::class.java)
+            val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 }

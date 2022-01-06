@@ -26,11 +26,12 @@
             app:layout_constraintBottom_toTopOf="@+id/linear2">
 
             <TextView
+                android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="당신의 나이는?"
                 android:textSize="40dp"
-                android:textColor="@color/black"
+                android:textColor="@color/sky"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:fontFamily="@font/medium"
@@ -41,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="나이에 따른 수면시간 분석을 위한 정보입니다."
                 android:textSize="15dp"
-                android:textColor="@color/black"
+                android:textColor="@color/light_indigo"
                 android:gravity="center"
                 android:fontFamily="@font/medium"
                 android:includeFontPadding="false"/>
@@ -63,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{vm.age}"
                 android:textSize="25dp"
-                android:textColor="@color/black"
+                android:textColor="@color/indigo"
                 android:fontFamily="@font/medium"
                 android:layout_marginBottom="30dp"
                 android:layout_gravity="center"/>
@@ -86,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1살"
-                    android:textColor="@color/black"
+                    android:textColor="@color/light_indigo"
                     android:fontFamily="@font/medium"/>
 
                 <View
@@ -97,7 +98,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:textColor="@color/light_indigo"
                     android:text="65+살"
                     android:fontFamily="@font/medium"/>
 

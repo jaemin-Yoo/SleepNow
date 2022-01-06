@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.example.sleepnow.utils.MyApplication
+import com.example.sleepnow.viewmodels.SelectAgeViewModel
 
 class SplashActivity : AppCompatActivity() {
 
