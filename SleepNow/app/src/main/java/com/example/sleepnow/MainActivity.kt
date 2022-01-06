@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
         tab_state.addTab(tab_state.newTab().setText("취침시간"))
 
         // ViewModel에서 다이얼로그를 띄우기 위한 EventWrapper
+        val dialog = CustomDialog(this)
         model.showDialog.observe(this, EventObserver{
-            val dialog = CustomDialog(this)
             dialog.showDialog(model.sleepTimeData)
         })
 

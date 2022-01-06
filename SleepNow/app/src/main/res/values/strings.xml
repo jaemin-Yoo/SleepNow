@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">슬립나우</string>
+
+    <string name="sleep_hour">수면시간: $s</string>
+    <string name="sleep_cycle">수면사이클: $s</string>
 </resources>

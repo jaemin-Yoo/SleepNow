@@ -11,6 +11,7 @@ import com.example.sleepnow.data.SleepTimeData
 import com.example.sleepnow.utils.Event
 import com.example.sleepnow.utils.MyApplication
 import com.google.android.material.tabs.TabLayout
+import java.text.SimpleDateFormat
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
 
@@ -52,24 +53,43 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
     private fun calculateWakeUpTime(hour: Int, min: Int, age: Int){
 
+        var dateFormat = SimpleDateFormat("hh:mm a")
         var sleepTimeList = arrayListOf<SleepTimeData>()
         var pickerMinute = hour * 60 + min
+
+        // 나이별 수면시간
+        var ONE_TWO_HOUR = 815.0
+        var THREE_FIVE_HOUR = 765.0
+        var SIX_THIRTEEN_HOUR = 665.0
+        var FOURTEEN_SEVENTEEN_HOUR = 615.0
+        var EIGHTEEN_SIXTY_FIVE_HOUR = 555.0
+
+        // 나이별 수면 사이클
+        var ONE_TWO_CYCLE = 16
+        var THREE_FIVE_CYCLE = 15
+        var SIX_THIRTEEN_CYCLE = 13
+        var FOURTEEN_SEVENTEEN_CYCLE = 12
+        var EIGHTEEN_SIXTY_FIVE_CYCLE = 6
 
         when(age){
             in 1..2 -> {
                 for (i in 1..4){
-                    var totalMinute = pickerMinute + 815
+                    var totalMinute = pickerMinute + ONE_TWO_HOUR
                     if (totalMinute >= 1440){
                         totalMinute -= 1440
                     }
 
-                    val calHour = totalMinute / 60
-                    val calMin = totalMinute % 60
-                    val time = "$calHour:$calMin"
-                    Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
-                    sleepTimeList.add(SleepTimeData(time))
+                    var totalMs = totalMinute * 60000
+                    var time = dateFormat.format(totalMs)
+                    Log.d("MainViewModel", "time: $time")
 
-                    pickerMinute -= 50
+                    var hour = String.format("%.1f", ONE_TWO_HOUR / 60)
+                    Log.d("MainViewModel", "hour: $hour")
+
+                    sleepTimeList.add(SleepTimeData(time, hour, ONE_TWO_CYCLE, true))
+
+                    ONE_TWO_HOUR -= 50
+                    ONE_TWO_CYCLE -= 1
                 }
 
                 sleepTimeData = sleepTimeList
@@ -77,18 +97,22 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
             in 3..5 -> {
                 for (i in 1..4){
-                    var totalMinute = pickerMinute + 765
+                    var totalMinute = pickerMinute + THREE_FIVE_HOUR
                     if (totalMinute >= 1440){
                         totalMinute -= 1440
                     }
 
-                    val calHour = totalMinute / 60
-                    val calMin = totalMinute % 60
-                    val time = "$calHour:$calMin"
-                    Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
-                    sleepTimeList.add(SleepTimeData(time))
+                    var totalMs = totalMinute * 60000
+                    var time = dateFormat.format(totalMs)
+                    Log.d("MainViewModel", "time: $time")
 
-                    pickerMinute -= 50
+                    var hour = String.format("%.1f", THREE_FIVE_HOUR / 60)
+                    Log.d("MainViewModel", "hour: $hour")
+
+                    sleepTimeList.add(SleepTimeData(time, hour, THREE_FIVE_CYCLE, true))
+
+                    THREE_FIVE_HOUR -= 50
+                    ONE_TWO_CYCLE -= 1
                 }
 
                 sleepTimeData = sleepTimeList
@@ -96,18 +120,24 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
             in 6..13 -> {
                 for (i in 1..4){
-                    var totalMinute = pickerMinute + 665
+                    var totalMinute = pickerMinute + SIX_THIRTEEN_HOUR
                     if (totalMinute >= 1440){
                         totalMinute -= 1440
                     }
 
-                    val calHour = totalMinute / 60
-                    val calMin = totalMinute % 60
-                    val time = "$calHour:$calMin"
-                    Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
-                    sleepTimeList.add(SleepTimeData(time))
+                    var totalMs = totalMinute * 60000
+                    var time = dateFormat.format(totalMs)
+                    Log.d("MainViewModel", "time: $time")
 
-                    pickerMinute -= 50
+                    var hour = String.format("%.1f", SIX_THIRTEEN_HOUR / 60)
+                    Log.d("MainViewModel", "hour: $hour")
+
+                    // 추천 수면 시간
+                    var suggested = i != 4
+                    sleepTimeList.add(SleepTimeData(time, hour, SIX_THIRTEEN_CYCLE, suggested))
+
+                    SIX_THIRTEEN_HOUR -= 50
+                    SIX_THIRTEEN_CYCLE -= 1
                 }
 
                 sleepTimeData = sleepTimeList
@@ -115,18 +145,23 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
             in 14..17 -> {
                 for (i in 1..4){
-                    var totalMinute = pickerMinute + 615
+                    var totalMinute = pickerMinute + FOURTEEN_SEVENTEEN_HOUR
                     if (totalMinute >= 1440){
                         totalMinute -= 1440
                     }
 
-                    val calHour = totalMinute / 60
-                    val calMin = totalMinute % 60
-                    val time = "$calHour:$calMin"
-                    Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
-                    sleepTimeList.add(SleepTimeData(time))
+                    var totalMs = totalMinute * 60000
+                    var time = dateFormat.format(totalMs)
+                    Log.d("MainViewModel", "time: $time")
 
-                    pickerMinute -= 50
+                    var hour = String.format("%.1f", FOURTEEN_SEVENTEEN_HOUR / 60)
+                    Log.d("MainViewModel", "hour: $hour")
+
+                    var suggested = i != 4
+                    sleepTimeList.add(SleepTimeData(time, hour, FOURTEEN_SEVENTEEN_CYCLE, suggested))
+
+                    FOURTEEN_SEVENTEEN_HOUR -= 50
+                    FOURTEEN_SEVENTEEN_CYCLE -= 1
                 }
 
                 sleepTimeData = sleepTimeList
@@ -134,18 +169,23 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
             in 18..64 -> {
                 for (i in 1..4){
-                    var totalMinute = pickerMinute + 555
+                    var totalMinute = pickerMinute + EIGHTEEN_SIXTY_FIVE_HOUR
                     if (totalMinute >= 1440){
                         totalMinute -= 1440
                     }
 
-                    val calHour = totalMinute / 60
-                    val calMin = totalMinute % 60
-                    val time = "$calHour:$calMin"
-                    Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
-                    sleepTimeList.add(SleepTimeData(time))
+                    var totalMs = totalMinute * 60000
+                    var time = dateFormat.format(totalMs)
+                    Log.d("MainViewModel", "time: $time")
 
-                    pickerMinute -= 90
+                    var hour = String.format("%.1f", EIGHTEEN_SIXTY_FIVE_HOUR / 60)
+                    Log.d("MainViewModel", "hour: $hour")
+
+                    var suggested = !(i == 3 || i == 4)
+                    sleepTimeList.add(SleepTimeData(time, hour, EIGHTEEN_SIXTY_FIVE_CYCLE, suggested))
+
+                    EIGHTEEN_SIXTY_FIVE_HOUR -= 90
+                    EIGHTEEN_SIXTY_FIVE_CYCLE -= 1
                 }
 
                 sleepTimeData = sleepTimeList
@@ -153,18 +193,23 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
             else -> {
                 for (i in 1..4){
-                    var totalMinute = pickerMinute + 555
+                    var totalMinute = pickerMinute + EIGHTEEN_SIXTY_FIVE_HOUR
                     if (totalMinute >= 1440){
                         totalMinute -= 1440
                     }
 
-                    val calHour = totalMinute / 60
-                    val calMin = totalMinute % 60
-                    val time = "$calHour:$calMin"
-                    Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
-                    sleepTimeList.add(SleepTimeData(time))
+                    var totalMs = totalMinute * 60000
+                    var time = dateFormat.format(totalMs)
+                    Log.d("MainViewModel", "time: $time")
 
-                    pickerMinute -= 90
+                    var hour = String.format("%.1f", EIGHTEEN_SIXTY_FIVE_HOUR / 60)
+                    Log.d("MainViewModel", "hour: $hour")
+
+                    var suggested = i == 2
+                    sleepTimeList.add(SleepTimeData(time, hour, EIGHTEEN_SIXTY_FIVE_CYCLE, suggested))
+
+                    EIGHTEEN_SIXTY_FIVE_HOUR -= 90
+                    EIGHTEEN_SIXTY_FIVE_CYCLE -= 1
                 }
 
                 sleepTimeData = sleepTimeList
@@ -176,24 +221,43 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
     private fun calculateBedTime(hour: Int, min: Int, age: Int){
 
+        var dateFormat = SimpleDateFormat("hh:mm a")
         var sleepTimeList = arrayListOf<SleepTimeData>()
         var pickerMinute = hour * 60 + min
+
+        // 나이별 수면시간
+        var ONE_TWO_HOUR = 815.0
+        var THREE_FIVE_HOUR = 765.0
+        var SIX_THIRTEEN_HOUR = 665.0
+        var FOURTEEN_SEVENTEEN_HOUR = 615.0
+        var EIGHTEEN_SIXTY_FIVE_HOUR = 555.0
+
+        // 나이별 수면 사이클
+        var ONE_TWO_CYCLE = 16
+        var THREE_FIVE_CYCLE = 15
+        var SIX_THIRTEEN_CYCLE = 13
+        var FOURTEEN_SEVENTEEN_CYCLE = 12
+        var EIGHTEEN_SIXTY_FIVE_CYCLE = 6
 
         when(age){
             in 1..2 -> {
                 for (i in 1..4){
-                    var totalMinute = pickerMinute - 815
+                    var totalMinute = pickerMinute - ONE_TWO_HOUR
                     if (totalMinute < 0){
                         totalMinute += 1440
                     }
 
-                    val calHour = totalMinute / 60
-                    val calMin = totalMinute % 60
-                    val time = "$calHour:$calMin"
-                    Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
-                    sleepTimeList.add(SleepTimeData(time))
+                    var totalMs = totalMinute * 60000
+                    var time = dateFormat.format(totalMs)
+                    Log.d("MainViewModel", "time: $time")
 
-                    pickerMinute += 50
+                    var hour = String.format("%.1f", ONE_TWO_HOUR / 60)
+                    Log.d("MainViewModel", "hour: $hour")
+
+                    sleepTimeList.add(SleepTimeData(time, hour, ONE_TWO_CYCLE, true))
+
+                    ONE_TWO_HOUR += 50
+                    ONE_TWO_CYCLE -= 1
                 }
 
                 sleepTimeData = sleepTimeList
@@ -201,18 +265,22 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
             in 3..5 -> {
                 for (i in 1..4){
-                    var totalMinute = pickerMinute - 765
+                    var totalMinute = pickerMinute - THREE_FIVE_HOUR
                     if (totalMinute < 0){
                         totalMinute += 1440
                     }
 
-                    val calHour = totalMinute / 60
-                    val calMin = totalMinute % 60
-                    val time = "$calHour:$calMin"
-                    Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
-                    sleepTimeList.add(SleepTimeData(time))
+                    var totalMs = totalMinute * 60000
+                    var time = dateFormat.format(totalMs)
+                    Log.d("MainViewModel", "time: $time")
 
-                    pickerMinute += 50
+                    var hour = String.format("%.1f", THREE_FIVE_HOUR / 60)
+                    Log.d("MainViewModel", "hour: $hour")
+
+                    sleepTimeList.add(SleepTimeData(time, hour, THREE_FIVE_CYCLE, true))
+
+                    THREE_FIVE_HOUR += 50
+                    THREE_FIVE_CYCLE -= 1
                 }
 
                 sleepTimeData = sleepTimeList
@@ -220,18 +288,24 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
             in 6..13 -> {
                 for (i in 1..4){
-                    var totalMinute = pickerMinute - 665
+                    var totalMinute = pickerMinute - SIX_THIRTEEN_HOUR
                     if (totalMinute < 0){
                         totalMinute += 1440
                     }
 
-                    val calHour = totalMinute / 60
-                    val calMin = totalMinute % 60
-                    val time = "$calHour:$calMin"
-                    Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
-                    sleepTimeList.add(SleepTimeData(time))
+                    var totalMs = totalMinute * 60000
+                    var time = dateFormat.format(totalMs)
+                    Log.d("MainViewModel", "time: $time")
 
-                    pickerMinute += 50
+                    var hour = String.format("%.1f", SIX_THIRTEEN_HOUR / 60)
+                    Log.d("MainViewModel", "hour: $hour")
+
+                    // 추천 수면 시간
+                    var suggested = i != 4
+                    sleepTimeList.add(SleepTimeData(time, hour, SIX_THIRTEEN_CYCLE, suggested))
+
+                    SIX_THIRTEEN_HOUR += 50
+                    SIX_THIRTEEN_CYCLE -= 1
                 }
 
                 sleepTimeData = sleepTimeList
@@ -239,18 +313,23 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
             in 14..17 -> {
                 for (i in 1..4){
-                    var totalMinute = pickerMinute - 615
+                    var totalMinute = pickerMinute - FOURTEEN_SEVENTEEN_HOUR
                     if (totalMinute < 0){
                         totalMinute += 1440
                     }
 
-                    val calHour = totalMinute / 60
-                    val calMin = totalMinute % 60
-                    val time = "$calHour:$calMin"
-                    Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
-                    sleepTimeList.add(SleepTimeData(time))
+                    var totalMs = totalMinute * 60000
+                    var time = dateFormat.format(totalMs)
+                    Log.d("MainViewModel", "time: $time")
 
-                    pickerMinute += 50
+                    var hour = String.format("%.1f", FOURTEEN_SEVENTEEN_HOUR / 60)
+                    Log.d("MainViewModel", "hour: $hour")
+
+                    var suggested = i != 4
+                    sleepTimeList.add(SleepTimeData(time, hour, FOURTEEN_SEVENTEEN_CYCLE, suggested))
+
+                    FOURTEEN_SEVENTEEN_HOUR += 50
+                    FOURTEEN_SEVENTEEN_CYCLE -= 1
                 }
 
                 sleepTimeData = sleepTimeList
@@ -258,18 +337,23 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
             in 18..64 -> {
                 for (i in 1..4){
-                    var totalMinute = pickerMinute - 555
+                    var totalMinute = pickerMinute - EIGHTEEN_SIXTY_FIVE_HOUR
                     if (totalMinute < 0){
                         totalMinute += 1440
                     }
 
-                    val calHour = totalMinute / 60
-                    val calMin = totalMinute % 60
-                    val time = "$calHour:$calMin"
-                    Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
-                    sleepTimeList.add(SleepTimeData(time))
+                    var totalMs = totalMinute * 60000
+                    var time = dateFormat.format(totalMs)
+                    Log.d("MainViewModel", "time: $time")
 
-                    pickerMinute += 90
+                    var hour = String.format("%.1f", EIGHTEEN_SIXTY_FIVE_HOUR / 60)
+                    Log.d("MainViewModel", "hour: $hour")
+
+                    var suggested = !(i == 3 || i == 4)
+                    sleepTimeList.add(SleepTimeData(time, hour, EIGHTEEN_SIXTY_FIVE_CYCLE, suggested))
+
+                    EIGHTEEN_SIXTY_FIVE_HOUR += 90
+                    EIGHTEEN_SIXTY_FIVE_CYCLE -= 1
                 }
 
                 sleepTimeData = sleepTimeList
@@ -277,18 +361,23 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
             else -> {
                 for (i in 1..4){
-                    var totalMinute = pickerMinute - 555
+                    var totalMinute = pickerMinute - EIGHTEEN_SIXTY_FIVE_HOUR
                     if (totalMinute < 0){
                         totalMinute += 1440
                     }
 
-                    val calHour = totalMinute / 60
-                    val calMin = totalMinute % 60
-                    val time = "$calHour:$calMin"
-                    Log.d("MainViewModel", "calHour: $calHour, calMin: $calMin")
-                    sleepTimeList.add(SleepTimeData(time))
+                    var totalMs = totalMinute * 60000
+                    var time = dateFormat.format(totalMs)
+                    Log.d("MainViewModel", "time: $time")
 
-                    pickerMinute += 90
+                    var hour = String.format("%.1f", EIGHTEEN_SIXTY_FIVE_HOUR / 60)
+                    Log.d("MainViewModel", "hour: $hour")
+
+                    var suggested = i == 2
+                    sleepTimeList.add(SleepTimeData(time, hour, EIGHTEEN_SIXTY_FIVE_CYCLE, suggested))
+
+                    EIGHTEEN_SIXTY_FIVE_HOUR += 90
+                    EIGHTEEN_SIXTY_FIVE_CYCLE -= 1
                 }
 
                 sleepTimeData = sleepTimeList
