@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:text="당신의 나이는?"
                 android:textSize="40dp"
-                android:textColor="@color/sky"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:fontFamily="@font/medium"
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{vm.age}"
                 android:textSize="25dp"
-                android:textColor="@color/indigo"
+                android:textColor="@color/black"
                 android:fontFamily="@font/medium"
                 android:layout_marginBottom="30dp"
                 android:layout_gravity="center"/>
@@ -76,6 +76,8 @@
                 android:max="65"
                 android:min="1"
                 android:progress="1"
+                android:thumb="@drawable/ic_moon"
+                android:progressDrawable="@drawable/seekbar_custom"
                 android:onProgressChanged="@{()->vm.changeAge(sbAge)}"/>
 
             <LinearLayout
@@ -87,7 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1살"
-                    android:textColor="@color/light_indigo"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/medium"/>
 
                 <View
@@ -98,7 +100,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/light_indigo"
+                    android:textColor="@color/black"
                     android:text="65+살"
                     android:fontFamily="@font/medium"/>
 
@@ -111,6 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="다음"
+            android:backgroundTint="#FCD1D1"
             app:layout_constraintTop_toBottomOf="@+id/linear2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

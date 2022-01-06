@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
-    android:background="@color/sky">
+    android:background="#D3E0DC">
 
     <ImageView
         android:id="@+id/img_moon"
@@ -35,6 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="수면시간추천어플"
+                android:textSize="12sp"
                 android:textColor="@color/black"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -47,23 +48,26 @@
 
         </LinearLayout>
 
-        <TextView
+        <com.example.sleepnow.etc.OutlineTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sleep Now"
-            android:textSize="50dp"
-            android:textColor="@color/indigo"
+            android:textSize="40sp"
+            android:textColor="#58CCFF"
             android:textStyle="bold"
             android:layout_gravity="center"
             android:fontFamily="@font/medium"
-            android:includeFontPadding="false"/>
+            android:includeFontPadding="false"
+            app:textStroke="true"
+            app:textStrokeColor="@color/black"
+            app:textStrokeWidth="5"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="슬립 나우"
-            android:textSize="30dp"
-            android:textColor="@color/light_indigo"
+            android:textSize="24sp"
+            android:textColor="@color/black"
             android:layout_gravity="center"
             android:fontFamily="@font/medium"
             android:includeFontPadding="false"/>
@@ -86,7 +90,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Copyright ⓒ iamjm29. All Right Reserved"
-        android:textColor="@color/light_indigo"
+        android:textSize="12sp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -20,7 +20,23 @@
 
     <!-- Setting 화면 Theme -->
     <style name="SettingTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#58CCFF</item>
+        <item name="colorPrimaryDark">#58CCFF</item>
         <item name="windowNoTitle">false</item>
         <item name="windowActionBar">true</item>
+    </style>
+
+    <!-- TimePicker 색상 변경 -->
+    <style name="Theme.AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
+    <style name="ThemeOverlay.NumberPicker" parent="Theme.AppTheme">
+        <!-- NumberPicker divider color -->
+        <item name="colorControlNormal">#58CCFF</item>
+        <item name="android:textColorPrimary">#58CCFF</item>
     </style>
 </resources>

@@ -12,6 +12,8 @@ import com.example.sleepnow.utils.Event
 import com.example.sleepnow.utils.MyApplication
 import com.google.android.material.tabs.TabLayout
 import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
 
@@ -54,6 +56,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     private fun calculateWakeUpTime(hour: Int, min: Int, age: Int){
 
         var dateFormat = SimpleDateFormat("hh:mm a")
+        dateFormat.timeZone = TimeZone.getTimeZone("UTC") // 휴대폰마다 결과 값이 다른 문제 해결
         var sleepTimeList = arrayListOf<SleepTimeData>()
         var pickerMinute = hour * 60 + min
 
@@ -221,7 +224,8 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
     private fun calculateBedTime(hour: Int, min: Int, age: Int){
 
-        var dateFormat = SimpleDateFormat("hh:mm a")
+        var dateFormat = SimpleDateFormat("a hh:mm", Locale.KOREA)
+        dateFormat.timeZone = TimeZone.getTimeZone("UTC")
         var sleepTimeList = arrayListOf<SleepTimeData>()
         var pickerMinute = hour * 60 + min
 
@@ -248,6 +252,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
                     }
 
                     var totalMs = totalMinute * 60000
+                    Log.d("MainViewModel", "totalMs: $totalMs")
                     var time = dateFormat.format(totalMs)
                     Log.d("MainViewModel", "time: $time")
 
@@ -256,7 +261,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
                     sleepTimeList.add(SleepTimeData(time, hour, ONE_TWO_CYCLE, true))
 
-                    ONE_TWO_HOUR += 50
+                    ONE_TWO_HOUR -= 50
                     ONE_TWO_CYCLE -= 1
                 }
 
@@ -279,7 +284,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
                     sleepTimeList.add(SleepTimeData(time, hour, THREE_FIVE_CYCLE, true))
 
-                    THREE_FIVE_HOUR += 50
+                    THREE_FIVE_HOUR -= 50
                     THREE_FIVE_CYCLE -= 1
                 }
 
@@ -304,7 +309,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
                     var suggested = i != 4
                     sleepTimeList.add(SleepTimeData(time, hour, SIX_THIRTEEN_CYCLE, suggested))
 
-                    SIX_THIRTEEN_HOUR += 50
+                    SIX_THIRTEEN_HOUR -= 50
                     SIX_THIRTEEN_CYCLE -= 1
                 }
 
@@ -328,7 +333,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
                     var suggested = i != 4
                     sleepTimeList.add(SleepTimeData(time, hour, FOURTEEN_SEVENTEEN_CYCLE, suggested))
 
-                    FOURTEEN_SEVENTEEN_HOUR += 50
+                    FOURTEEN_SEVENTEEN_HOUR -= 50
                     FOURTEEN_SEVENTEEN_CYCLE -= 1
                 }
 
@@ -352,7 +357,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
                     var suggested = !(i == 3 || i == 4)
                     sleepTimeList.add(SleepTimeData(time, hour, EIGHTEEN_SIXTY_FIVE_CYCLE, suggested))
 
-                    EIGHTEEN_SIXTY_FIVE_HOUR += 90
+                    EIGHTEEN_SIXTY_FIVE_HOUR -= 90
                     EIGHTEEN_SIXTY_FIVE_CYCLE -= 1
                 }
 
@@ -376,7 +381,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
                     var suggested = i == 2
                     sleepTimeList.add(SleepTimeData(time, hour, EIGHTEEN_SIXTY_FIVE_CYCLE, suggested))
 
-                    EIGHTEEN_SIXTY_FIVE_HOUR += 90
+                    EIGHTEEN_SIXTY_FIVE_HOUR -= 90
                     EIGHTEEN_SIXTY_FIVE_CYCLE -= 1
                 }
 

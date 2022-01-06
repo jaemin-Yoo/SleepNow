@@ -54,7 +54,8 @@ class SelectAgeActivity : AppCompatActivity() {
 
         // 특정 글자 색상 변경
         var ssb = SpannableStringBuilder(tv_title.text)
-        ssb.setSpan(ForegroundColorSpan(ContextCompat.getColor(this, R.color.indigo)), 4, 6, SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE)
+        //ssb.setSpan(ForegroundColorSpan(ContextCompat.getColor(this, R.color.indigo)), 4, 6, SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE)
+        ssb.setSpan(ForegroundColorSpan(Color.parseColor("#58CCFF")), 4, 6, SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE)
         tv_title.text = ssb
     }
 }
