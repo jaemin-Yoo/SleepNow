@@ -29,11 +29,6 @@ class SettingActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.vm = model
 
-        // 타이틀바 설정
-        var actionBar = supportActionBar
-        actionBar!!.title = "설정"
-        actionBar.setDisplayHomeAsUpEnabled(true)
-
         result = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             if (it.resultCode == Activity.RESULT_OK){
                 tv_age.text = it.data?.getIntExtra("age", -1).toString() + "살"
@@ -46,5 +41,13 @@ class SettingActivity : AppCompatActivity() {
             intent.putExtra("age", age)
             result.launch(intent)
         }
+
+        setActionBar() // 액션바 설정
+    }
+
+    private fun setActionBar(){
+        var actionBar = supportActionBar
+        actionBar!!.title = "설정"
+        actionBar.setDisplayHomeAsUpEnabled(true)
     }
 }

@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -36,10 +38,35 @@ class MainActivity : AppCompatActivity() {
             dialog.showDialog(model.sleepTimeData)
         })
 
-        // 설정 이동
-        btn_setting.setOnClickListener {
-            val intent = Intent(this, SettingActivity::class.java)
-            startActivity(intent)
+        setActionBar() // 액션바 설정
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.actionbar_actions, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.action_setting -> {
+                // 설정 이동
+                val intent = Intent(this, SettingActivity::class.java)
+                startActivity(intent)
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
         }
+    }
+    
+    private fun setActionBar(){
+        // 액션바 아이콘 표시
+        val ab = supportActionBar
+        ab!!.setIcon(R.drawable.ic_moon)
+        ab.setDisplayUseLogoEnabled(true)
+        ab.setDisplayShowHomeEnabled(true)
+
+        // 액션바 그림자 제거
+        ab.elevation = 0F
     }
 }

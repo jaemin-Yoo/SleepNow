@@ -26,7 +26,7 @@
                 android:layout_gravity="center"
                 android:text="@{list.time}"
                 android:textSize="24sp"
-                android:textColor="@color/black"
+                android:textColor="#FF000000"
                 android:textStyle="bold"
                 android:fontFamily="@font/medium"
                 android:includeFontPadding="false"/>
@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:text="추천"
                     android:textSize="12sp"
-                    android:textColor="#58CCFF"
+                    android:textColor="@color/sky"
                     android:layout_gravity="center"
                     android:fontFamily="@font/medium"
                     android:includeFontPadding="false"/>

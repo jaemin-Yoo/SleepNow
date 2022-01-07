@@ -52,10 +52,25 @@ class SelectAgeActivity : AppCompatActivity() {
             }
         }
 
-        // 특정 글자 색상 변경
+        changeTextColor() // 특정 글자 색상 변경
+        setActionBar() // 액션바 설정
+    }
+
+    private fun changeTextColor(){
         var ssb = SpannableStringBuilder(tv_title.text)
-        //ssb.setSpan(ForegroundColorSpan(ContextCompat.getColor(this, R.color.indigo)), 4, 6, SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE)
-        ssb.setSpan(ForegroundColorSpan(Color.parseColor("#58CCFF")), 4, 6, SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE)
+        ssb.setSpan(ForegroundColorSpan(ContextCompat.getColor(this, R.color.sky)), 4, 6, SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE)
+        //ssb.setSpan(ForegroundColorSpan(Color.parseColor("#58CCFF")), 4, 6, SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE)
         tv_title.text = ssb
+    }
+
+    private fun setActionBar(){
+        // 액션바 아이콘 표시
+        val ab = supportActionBar
+        ab!!.setIcon(R.drawable.ic_moon)
+        ab.setDisplayUseLogoEnabled(true)
+        ab.setDisplayShowHomeEnabled(true)
+
+        // 액션바 그림자 제거
+        ab.elevation = 0F
     }
 }

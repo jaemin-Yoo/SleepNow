@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.SleepNow" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.SleepNow" parent="Theme.AppCompat.Light">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -12,18 +12,17 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
 
-        <!-- Title, ActionBar -->
-        <item name="windowActionBar">false</item>
+    <!-- Splash 화면 Theme -->
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
     </style>
 
     <!-- Setting 화면 Theme -->
-    <style name="SettingTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#58CCFF</item>
-        <item name="colorPrimaryDark">#58CCFF</item>
-        <item name="windowNoTitle">false</item>
-        <item name="windowActionBar">true</item>
+    <style name="SettingTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/sky</item>
     </style>
 
     <!-- TimePicker 색상 변경 -->
@@ -36,7 +35,7 @@
 
     <style name="ThemeOverlay.NumberPicker" parent="Theme.AppTheme">
         <!-- NumberPicker divider color -->
-        <item name="colorControlNormal">#58CCFF</item>
-        <item name="android:textColorPrimary">#58CCFF</item>
+        <item name="colorControlNormal">@color/sky</item>
+        <item name="android:textColorPrimary">@color/sky</item>
     </style>
 </resources>

@@ -14,15 +14,6 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <ImageView
-            android:id="@+id/btn_setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:src="@drawable/ic_setting"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
         <LinearLayout
             android:id="@+id/linear1"
             android:layout_width="match_parent"
@@ -38,9 +29,9 @@
                 android:id="@+id/tab_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:tabTextColor="#D3E0DC"
-                app:tabSelectedTextColor="#58CCFF"
-                app:tabIndicatorColor="#58CCFF"/>
+                app:tabTextColor="@color/dark_sky"
+                app:tabSelectedTextColor="@color/sky"
+                app:tabIndicatorColor="@color/sky"/>
 
             <TimePicker
                 android:id="@+id/timepicker"
@@ -54,8 +45,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="계산"
+                android:textColor="@color/white"
                 android:onClick="@{()->vm.getTime(timepicker, tabState)}"
-                android:backgroundTint="#FCD1D1"/>
+                android:backgroundTint="@color/pink"/>
 
         </LinearLayout>
 

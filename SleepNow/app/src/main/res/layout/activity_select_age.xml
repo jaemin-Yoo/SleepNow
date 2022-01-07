@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="나이에 따른 수면시간 분석을 위한 정보입니다."
                 android:textSize="15dp"
-                android:textColor="@color/light_indigo"
+                android:textColor="@color/black"
                 android:gravity="center"
                 android:fontFamily="@font/medium"
                 android:includeFontPadding="false"/>
@@ -113,7 +113,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="다음"
-            android:backgroundTint="#FCD1D1"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/pink"
             app:layout_constraintTop_toBottomOf="@+id/linear2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
