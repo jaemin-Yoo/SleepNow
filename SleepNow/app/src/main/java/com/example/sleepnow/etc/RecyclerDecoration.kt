@@ -4,6 +4,10 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ *  리사이클러뷰 아이템 간 간격 설정
+ */
+
 class RecyclerDecoration(divHeight: Int): RecyclerView.ItemDecoration() {
 
     private var divHeight = 0

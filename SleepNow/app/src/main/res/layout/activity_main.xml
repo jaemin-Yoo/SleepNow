@@ -40,6 +40,14 @@
                 android:timePickerMode="spinner"
                 android:theme="@style/ThemeOverlay.NumberPicker"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.sleepState}"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/medium"/>
+
             <Button
                 android:id="@+id/btn_calculate"
                 android:layout_width="wrap_content"
@@ -47,7 +55,7 @@
                 android:text="계산"
                 android:textColor="@color/white"
                 android:onClick="@{()->vm.getTime(timepicker, tabState)}"
-                android:backgroundTint="@color/pink"/>
+                android:backgroundTint="@color/sky"/>
 
         </LinearLayout>
 

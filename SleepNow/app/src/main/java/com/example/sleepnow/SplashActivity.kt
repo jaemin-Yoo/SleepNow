@@ -1,12 +1,11 @@
 package com.example.sleepnow
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import com.example.sleepnow.utils.MyApplication
-import com.example.sleepnow.viewmodels.SelectAgeViewModel
 
 class SplashActivity : AppCompatActivity() {
 
@@ -16,10 +15,9 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        // x초 뒤 Activity 이동
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
-            // x초 뒤 Activity 이동
-
             // 나이 선택 여부 확인
             val age = MyApplication.prefs.getInt("age")
             val intent = if (age == -1){

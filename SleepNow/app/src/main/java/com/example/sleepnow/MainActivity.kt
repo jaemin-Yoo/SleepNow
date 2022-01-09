@@ -1,19 +1,17 @@
 package com.example.sleepnow
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import com.example.sleepnow.databinding.ActivityMainBinding
 import com.example.sleepnow.dialogs.CustomDialog
 import com.example.sleepnow.utils.EventObserver
-import com.example.sleepnow.utils.MyApplication
 import com.example.sleepnow.viewmodels.MainViewModel
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +29,20 @@ class MainActivity : AppCompatActivity() {
         // 슬라이드 탭 추가
         tab_state.addTab(tab_state.newTab().setText("기상시간"))
         tab_state.addTab(tab_state.newTab().setText("취침시간"))
+
+        tab_state.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                model.changeTab()
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+        })
 
         // ViewModel에서 다이얼로그를 띄우기 위한 EventWrapper
         val dialog = CustomDialog(this)

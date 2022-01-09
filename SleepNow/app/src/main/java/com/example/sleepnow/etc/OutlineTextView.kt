@@ -7,6 +7,9 @@ import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import com.example.sleepnow.R
 
+/**
+ *  텍스트 외곽선 설정
+ */
 
 class OutlineTextView : AppCompatTextView {
     private var stroke = false

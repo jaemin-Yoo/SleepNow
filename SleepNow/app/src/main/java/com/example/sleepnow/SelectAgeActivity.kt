@@ -1,12 +1,11 @@
 package com.example.sleepnow
 
 import android.content.Intent
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.sleepnow.databinding.ActivitySelectAgeBinding
@@ -59,7 +58,6 @@ class SelectAgeActivity : AppCompatActivity() {
     private fun changeTextColor(){
         var ssb = SpannableStringBuilder(tv_title.text)
         ssb.setSpan(ForegroundColorSpan(ContextCompat.getColor(this, R.color.sky)), 4, 6, SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE)
-        //ssb.setSpan(ForegroundColorSpan(Color.parseColor("#58CCFF")), 4, 6, SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE)
         tv_title.text = ssb
     }
 

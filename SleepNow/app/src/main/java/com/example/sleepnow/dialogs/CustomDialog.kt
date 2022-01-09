@@ -4,16 +4,13 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.util.Log
 import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sleepnow.R
 import com.example.sleepnow.adapters.TimeListAdapter
 import com.example.sleepnow.data.SleepTimeData
 import com.example.sleepnow.etc.RecyclerDecoration
-import com.example.sleepnow.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.dialog_time_list.*
-import java.text.SimpleDateFormat
 
 class CustomDialog(context: Context){
     private val dialog = Dialog(context)

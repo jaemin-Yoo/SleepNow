@@ -2,14 +2,12 @@ package com.example.sleepnow
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
-import com.example.sleepnow.databinding.ActivitySelectAgeBinding
 import com.example.sleepnow.databinding.ActivitySettingBinding
 import com.example.sleepnow.utils.MyApplication
 import com.example.sleepnow.viewmodels.SelectAgeViewModel
@@ -31,7 +29,13 @@ class SettingActivity : AppCompatActivity() {
 
         result = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             if (it.resultCode == Activity.RESULT_OK){
-                tv_age.text = it.data?.getIntExtra("age", -1).toString() + "살"
+                var data = it.data?.getIntExtra("age", -1)
+
+                if (data == 65){
+                    tv_age.text = "${data}+살"
+                } else{
+                    tv_age.text = "${data}살"
+                }
                 age = MyApplication.prefs.getInt("age")
             }
         }

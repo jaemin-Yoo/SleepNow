@@ -22,7 +22,13 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     private val _showDialog = MutableLiveData<Event<Boolean>>()
     val showDialog: LiveData<Event<Boolean>> = _showDialog
 
+    val sleepState = MutableLiveData<String>()
+
     var sleepTimeData = ArrayList<SleepTimeData>()
+
+    init {
+        sleepState.value = "자러 갈 시간을 확인하세요."
+    }
 
     fun getTime(timePicker: TimePicker, tabLayout: TabLayout){
 
@@ -50,6 +56,14 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
             calculateBedTime(hour, min, age) // 취침시간 계산
         } else{
             calculateWakeUpTime(hour, min, age) // 기상시간 계산
+        }
+    }
+
+    fun changeTab(){
+        if (sleepState.value == "자러 갈 시간을 확인하세요."){
+            sleepState.value = "일어 날 시간을 확인하세요."
+        } else{
+            sleepState.value = "자러 갈 시간을 확인하세요."
         }
     }
 
