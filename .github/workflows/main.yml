@@ -26,7 +26,7 @@ jobs:
      
      
     - name: Build APK
-      run: bash ./gradlew assembleDebug --warning-mode all--stacktrace
+      run: bash ./gradlew assembleDebug --warning-mode all --stacktrace
      
      
     - run: './gradlew assembleDebug'
