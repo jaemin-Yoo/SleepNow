@@ -19,11 +19,16 @@ jobs:
       with:
         java-version: '11'
         java-package: jdk
+        
+    - name: Change gradlew permissions
+      run: chmod +x ./gradlew
+
+    - name: Build with Gradle
+      run: ./gradlew build
        
     - name: Get current date
       id: date
       run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
-     
      
     - name: Build APK
       run: bash ./gradlew assembleDebug --warning-mode all --stacktrace
