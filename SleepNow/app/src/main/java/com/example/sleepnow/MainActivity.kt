@@ -14,6 +14,10 @@ import com.example.sleepnow.viewmodels.MainViewModel
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 
+/***
+ *  SleepNow CI/CD Test
+ */
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
