@@ -3,7 +3,11 @@
 # Project: SleepNow
 * 슬립 나우
 * 개인 프로젝트
-* 2020.01 ~ 2020.01
+* 2020.01 ~ 2020.01  
+[Google PlayStore](https://play.google.com/store/apps/details?id=com.jaemin.sleepnow)
+
+> CMC 동아리 활동 전 앱 출시 경험이 없어 경험을 쌓고자 빠르게 1~2주만에 만들어본 간단한 앱  
+> 이 프로젝트 덕분에 CMC 동아리 데모데이날까지 무사히 앱 출시를 완료할 수 있었다.
 
 ## 0. Overview
 슬립나우는 자러 갈 시간이나 일어 날 시간을 선택하게 되면 나이에 따른 적절한 수면시간을 추천해주는 앱입니다.  
