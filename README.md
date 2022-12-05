@@ -3,7 +3,7 @@
 # Project: SleepNow
 * 슬립 나우
 * 개인 프로젝트
-* 2020.01 ~ 2020.01  
+* 2022.01 ~ 2022.01  
 [Google PlayStore](https://play.google.com/store/apps/details?id=com.jaemin.sleepnow)
 
 > CMC 동아리 활동 전 앱 출시 경험이 없어 경험을 쌓고자 빠르게 1~2주만에 만들어본 간단한 앱  
